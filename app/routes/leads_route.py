@@ -6,5 +6,5 @@ bp_leads = Blueprint("bp_leads", __name__, url_prefix="/leads")
 
 bp_leads.post("")(create_leads)
 bp_leads.get("")(get_leads)
-bp_leads.patch("<string:email>")(patch_leads)
-bp_leads.delete("<string:email>")(delete_leads)
+bp_leads.patch("")(patch_leads)
+bp_leads.delete("")(delete_leads)

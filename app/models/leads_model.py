@@ -1,6 +1,6 @@
+from dataclasses import dataclass
 from datetime import datetime
 from sqlalchemy import Column, Integer, String, DateTime
-from dataclasses import dataclass
 
 from app.configs.database import db
 

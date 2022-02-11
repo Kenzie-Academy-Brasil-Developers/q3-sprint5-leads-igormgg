@@ -12,3 +12,15 @@ class InvalidPhone(Exception):
         super().__init__(*args, **kwargs)
         self.description = {'error': 'Phone in an invalid format. Must be in (xx)xxxxx-xxxx'}
         self.code = 400
+
+class InvalidKeys(Exception):
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self.description = {'error': 'Only the email key is accepted'}
+        self.code = 400
+
+class InvalidValueType(Exception):
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self.description = {'error': 'The value type must be a string'}
+        self.code = 422
