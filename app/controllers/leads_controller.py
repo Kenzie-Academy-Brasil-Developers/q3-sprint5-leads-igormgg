@@ -41,6 +41,9 @@ def create_leads():
     
     except InvalidEmail as ie:
         return ie.email_err_description(data['email']), ie.code
+    
+    except KeyError as ke:
+        return {"error": f'{ke.args[0]} missing'}, 400
 
 def get_leads():
     try:
@@ -57,10 +60,11 @@ def get_leads():
 
 def patch_leads():
     data = request.get_json()
-    email = data['email']
     email_regex = "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
 
     try:
+        email = data['email']
+
         if len(data.keys()) > 1:
             raise InvalidKeys
         
@@ -79,8 +83,11 @@ def patch_leads():
 
         return '', 204
     
+    except KeyError as ke:
+        return {"error": f'{ke.args[0]} missing'}, 400
+
     except NoResultFound:
-        return {'error': f'{email} does not exist on database'}, 404
+        return {'error': f'{data["email"]} does not exist on database'}, 404
 
     except InvalidKeys as ik:
         return ik.description, ik.code
@@ -89,14 +96,16 @@ def patch_leads():
         return ivt.description, ivt.code
 
     except InvalidEmail as ie:
-        return ie.email_err_description(email), ie.code
+        return ie.email_err_description(data['email']), ie.code
+    
 
 def delete_leads():
     data = request.get_json()
-    email = data['email']
     email_regex = "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
 
     try:
+        email = data['email']
+
         if len(data.keys()) > 1:
             raise InvalidKeys
         
@@ -114,7 +123,7 @@ def delete_leads():
         return "", 204
 
     except NoResultFound:
-        return {'error': f'{email} does not exist on database'}, 404
+        return {'error': f'{data["email"]} does not exist on database'}, 404
     
     except InvalidKeys as ik:
         return ik.description, ik.code
@@ -123,4 +132,7 @@ def delete_leads():
         return ivt.description, ivt.code
 
     except InvalidEmail as ie:
-        return ie.email_err_description(email), ie.code
+        return ie.email_err_description(data['email']), ie.code
+    
+    except KeyError as ke:
+        return {"error": f'{ke.args[0]} missing'}, 400
