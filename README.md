@@ -1,18 +1,56 @@
-# Leads
+# URL base da API
 
+https://leads-api-igor.herokuapp.com/
 
-| Critérios | Pts. |
-|---|---|
-| Utilizar **SQLAlchemy**, **Dataclass**, **Blueprint**, **Migrations** e **Padrão Flask Factory** corretamente. | 1 |
-| [GET] **/leads** - Rota funcionando e ordenada de acordo com o enunciado. | 1 |
-| [GET] **/leads** - [ERRO] Nenhum dado encontrado. | 0.5 |
-| [POST] **/leads** - Rota funcionando de acordo com o enunciado. | 1 |
-| [POST] **/leads** - [ERRO] E-mail e telefone únicos. | 0.5 |
-| [POST] **/leads** - [ERRO] Telefone obrigatoriamente no formato (xx)xxxxx-xxxx. | 0.5 |
-| [PATCH] **/leads** - Rota funcionando de acordo com o enunciado. | 2 |
-| [PATCH] **/leads** - [ERRO] - Corpo da requisição obrigatoriamente apenas com email e deve ser uma string; | 0.5 |
-| [PATCH] **/leads** - [ERRO] - Nenhum dado encontrado. | 0.5 |
-| [DELETE] **/leads** - Rota funcionando de acordo com o enunciado. | 1 |
-| [DELETE] **/leads** - [ERRO] - Corpo da requisição obrigatoriamente apenas com email e deve ser uma string; | 0.5 |
-| [DELETE] **/leads** - [ERRO] - Nenhum dado encontrado. | 0.5 |
-| Arquivos **requirements.txt**, **.env**, **.env.example** e **.gitignore** (**venv** e **.env** adicionados) | 0.5 |
+## Endpoints
+
+Existem 4 endpoints nessa aplicação: Um pra registro de lead, um pra listagem dos registros, um pra atualização das visitas de um lead, e o último para deleção de um lead específico
+
+### Registro
+
+POST /leads
+
+Essa rota serve para registrar um novo lead no banco de dados, sendo obrigatório passar no corpo da requisição o nome, email e telefone do lead a registrar. <br>
+Exemplo de requisição:
+
+```json
+{
+    "name": "John Doe",
+    "email": "john@email.com",
+    "phone": "(41)90000-0000"
+}
+```
+
+### Listagem
+
+GET /leads
+
+Essa segunda rota é usada para obter a listagem dos leads cadastrados no banco de dados. <br>
+Aqui não é necessário passar nenhum dado no corpo da requisição.
+
+### Atualização
+
+PATCH /leads
+
+Já a rota patch /leads pode ser usada para registrar a visita de um lead, aumentando em 1 o valor da coluna "visits" do lead no banco de dados. <br>
+No corpo da requisição deve ser passado apenas o email do lead a atualizar. <br>
+Exemplo de requisição:
+
+```json
+{
+    "email": "john@email.com"
+}
+```
+
+### Deleção
+
+DELETE /leads <br/>
+
+Por último, a requisição DELETE /leads pode ser usada para deletar um lead específico do banco de dados, sendo necessário passar apenas o email no corpo da requisição. <br>
+Exemplo de requisição:
+
+```json
+{
+    "email": "john@email.com"
+}
+```
