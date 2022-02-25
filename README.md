@@ -1,10 +1,27 @@
-# URL base da API
+# LEADS API
+
+## URL base da API
 
 https://leads-api-igor.herokuapp.com/
 
+## Tecnologias utilizadas
+
+#### Framework
+- Flask
+
+#### Libraries
+- Flask-SQLAlchemy <br>
+- Migrations <br>
+- Blueprints <br>
+- Dataclasses
+
+## Inicialização da API
+
+Para começar a utilizar a API Leads, copie a URL base da aplicação e use-a na sua ferramenta cliente de API de preferência, complementando a URL com os endpoints da aplicação, explicados a seguir.
+
 ## Endpoints
 
-Existem 4 endpoints nessa aplicação: Um pra registro de lead, um pra listagem dos registros, um pra atualização das visitas de um lead, e o último para deleção de um lead específico
+Existem 4 endpoints nessa aplicação: Um pra registro de lead, um pra listagem dos registros, um pra atualização das visitas de um lead, e o último para deleção de um lead específico.
 
 ### Registro
 
