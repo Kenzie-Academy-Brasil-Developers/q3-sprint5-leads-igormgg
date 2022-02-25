@@ -17,7 +17,7 @@ https://leads-api-igor.herokuapp.com/
 
 ## Inicialização da API
 
-Para começar a utilizar a API Leads, copie a URL base da aplicação e use-a na sua ferramenta cliente de API de preferência, complementando a URL com os endpoints da aplicação, explicados a seguir.
+Para começar a utilizar a API Leads, copie a URL base da aplicação e use-a na sua ferramenta cliente de API de preferência (recomendo o Insomnia), complementando a URL com os endpoints da aplicação, explicados a seguir.
 
 ## Endpoints
 
